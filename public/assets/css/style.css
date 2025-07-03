@@ -1,0 +1,253 @@
+/* Import Vazirmatn font */
+@font-face {
+    font-family: 'Vazirmatn';
+    src: url('../fonts/Vazirmatn-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vazirmatn';
+    src: url('../fonts/Vazirmatn-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Add other font weights as needed (Thin, Light, Medium, etc.) */
+
+
+/* Set Vazirmatn as the default font for the entire body */
+body {
+    font-family: 'Vazirmatn', sans-serif;
+    color: #333; /* Default text color for better readability */
+    background-color: #f8f9fa; /* Light background for consistency */
+}
+
+/* Ensure form controls also use Vazirmatn */
+input, select, textarea, button {
+    font-family: 'Vazirmatn', sans-serif !important;
+}
+
+/* General styling improvements for Bootstrap components */
+.btn {
+    border-radius: 8px;
+    padding: 8px 15px;
+}
+
+.card {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Specific styling for the login/register page */
+.min-vh-100 {
+    min-height: 100vh;
+}
+.bg-light-subtle {
+    background-color: #f8f9fa !important; /* A very light grey background */
+}
+.text-primary {
+    color: #007bff !important; /* Standard Bootstrap primary blue */
+}
+.text-muted {
+    color: #6c757d !important;
+}
+.form-control-lg {
+    padding: 0.75rem 1.25rem;
+}
+.rounded-pill {
+    border-radius: 50rem !important; /* Make inputs and buttons more rounded */
+}
+.shadow-sm {
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+}
+.shadow-lg {
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
+}
+
+/* Custom styling for Category Tree View */
+.category-tree-container {
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.category-tree {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.category-item {
+    margin-bottom: 5px; /* Space between items */
+    position: relative;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    overflow: hidden; /* To contain inner elements */
+    transition: all 0.2s ease;
+}
+
+.category-item:hover {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+}
+
+/* New style for the clickable wrapper */
+.category-title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    background-color: #f0f2f5; /* Slightly darker background for title bar */
+    border-bottom: 1px solid #e0e0e0;
+    /* Removed cursor: pointer here, added to .tree-toggle-wrapper */
+}
+
+/* Apply cursor and transition to the clickable wrapper only if it has children */
+.category-title-wrapper.tree-toggle-wrapper {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.category-title-wrapper.tree-toggle-wrapper:hover {
+    background-color: #e6e9ed; /* Highlight when hovered */
+}
+
+.category-item.open > .category-title-wrapper {
+    background-color: #e6e9ed; /* Highlight when open */
+}
+
+.category-name-display {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    color: #343a40;
+    flex-grow: 1; /* Allow name to take available space */
+}
+
+.icon {
+    font-size: 0.9em;
+    color: #007bff; /* Primary blue for toggle icons */
+    margin-left: 8px; /* Space between icon and text */
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Bootstrap's collapse.js adds 'collapsed' class to the toggler when it's collapsed.
+   We need to target the icon based on the toggler's state. */
+.category-title-wrapper.collapsed .icon.fa-caret-right {
+    transform: rotate(0deg); /* Default state for right arrow (collapsed) */
+}
+
+.category-title-wrapper:not(.collapsed) .icon.fa-caret-right {
+    transform: rotate(90deg); /* Rotate to down when parent is open */
+}
+
+.leaf-icon {
+    color: #28a745; /* Green for leaf nodes */
+    font-size: 0.8em;
+}
+
+.buttons {
+    display: flex;
+    gap: 8px; /* Space between buttons */
+    flex-shrink: 0;
+}
+
+/* Specific button colors (as requested) */
+.edit-btn {
+    background-color: #17a2b8; /* Bootstrap Info */
+    color: white;
+}
+.edit-btn:hover {
+    background-color: #138496;
+}
+.delete-btn {
+    background-color: #dc3545; /* Bootstrap Danger */
+    color: white;
+}
+.delete-btn:hover {
+    background-color: #c82333;
+}
+.add-btn {
+    background-color: #28a745; /* Bootstrap Success */
+    color: white;
+}
+.add-btn:hover {
+    background-color: #218838;
+}
+
+/* Nested children list */
+.category-children {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+    background-color: #fafafa; /* Light background for children container */
+    border-top: 1px dashed #e0e0e0; /* Separator from parent */
+    padding-top: 10px;
+    padding-bottom: 5px;
+    /* display: none; /* Managed by Bootstrap's collapse.js */ */
+}
+
+/* The 'show' class is automatically added/removed by Bootstrap's collapse.js */
+/* .category-children.show {
+    display: block; /* Overrides display:none when open */
+/* } */
+
+/* Indentation for nested levels */
+.category-item.level-0 > .category-children > .category-item {
+    padding-left: 20px; /* Indent first level children */
+}
+.category-item.level-1 > .category-children > .category-item {
+    padding-left: 40px; /* Indent second level children */
+}
+.category-item.level-2 > .category-children > .category-item {
+    padding-left: 60px; /* Indent third level children */
+}
+/* Add more levels as needed */
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+    .category-title-wrapper {
+        flex-direction: column; /* Stack name and buttons vertically */
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .category-name-display {
+        margin-bottom: 8px;
+        font-size: 0.95em;
+    }
+
+    .buttons {
+        width: 100%;
+        justify-content: flex-end; /* Align buttons to the right on mobile */
+        gap: 5px;
+    }
+
+    .category-item.level-0 > .category-children > .category-item {
+        padding-left: 10px; /* Reduce indentation on smaller screens */
+    }
+    .category-item.level-1 > .category-children > .category-item {
+        padding-left: 20px;
+    }
+    .category-item.level-2 > .category-children > .category-item {
+        padding-left: 30px;
+    }
+}
+
+/* New style for clickable dashboard cards */
+.clickable-card {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    display: block; /* Ensure the anchor tag behaves like a block element */
+    height: 100%; /* Make sure the link takes the full height of the card */
+}
+
+.clickable-card:hover {
+    transform: translateY(-5px); /* Slight lift effect on hover */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* More pronounced shadow */
+}
